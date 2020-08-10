@@ -7,13 +7,13 @@ To do the exercise, complete the following steps:
 **Note**: Classes provided in this exercise will show compilation errors when the exercise is cloned locally. 
 You need to go through the comments thoroughly and complete the application.
 
-    1. Manage Dependencies in pom.xml.
+    1. Manage dependencies in pom.xml.
     2. Complete the classes and methods by analyzing the test code, so that there are no compilation errors.
     3. Implement the CRUD Operations on Blog :
 
           +Write a method as per the below requirements
             - Should save a blog
-            - Should return blog object
+            - Should return Blog object
            
           +Write a method as per the below requirements
             - Should fetch all blogs
