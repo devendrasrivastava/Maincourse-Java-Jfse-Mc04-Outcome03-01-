@@ -79,6 +79,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>io.leopard.boot</groupId>
+            <artifactId>leopard-boot-requestmapping</artifactId>
+            <version>0.9.20</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bitbucket.omargameelsalem</groupId>
+            <artifactId>T4Spring</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

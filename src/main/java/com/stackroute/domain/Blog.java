@@ -8,6 +8,16 @@ public class Blog {
     private String authorName;
     private String blogContent;
 
+    public Blog(int blogId, String blogTitle, String authorName, String blogContent) {
+        this.blogId = blogId;
+        this.blogTitle = blogTitle;
+        this.authorName = authorName;
+        this.blogContent = blogContent;
+    }
+
+    public Blog() {
+    }
+
     /* Generate no-arg and parametrized consructor */
 
     public int getBlogId() {
