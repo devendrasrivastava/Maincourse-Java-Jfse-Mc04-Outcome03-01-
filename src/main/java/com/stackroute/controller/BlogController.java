@@ -12,7 +12,6 @@ import java.util.List;
 
 /* Add annotation to declare this class as REST Controller */
 @RestController
-@RequestMapping("/api/v1")
 public class BlogController {
 
     /* Provide implementation code for these methods */
@@ -20,7 +19,7 @@ public class BlogController {
     private BlogService blogService;
 
     /*This method should save blog and return savedBlog Object */
-    @PostMapping("save")
+    @PostMapping("/save")
     public ResponseEntity<Blog> saveBlog(@RequestBody Blog newBlog) {
         Blog addBlog = blogService.saveBlog(newBlog);
         return new ResponseEntity<>(addBlog, HttpStatus.CREATED);
@@ -29,15 +28,15 @@ public class BlogController {
 
     /*This method should fetch all blogs and return the list of all blogs */
     @GetMapping("/blogs")
-    public List<Blog> getAllBlogs() {
-        return this.blogService.getAllBlogs();
+    public ResponseEntity<List<Blog>> getAllBlogs() {
+        return ResponseEntity.ok().body(blogService.getAllBlogs());
     }
 
 
     /*This method should fetch the blog taking its id and return the respective blog */
     @GetMapping("/blogs/{blogId}")
-    public Blog getBlogById(@PathVariable Integer blogId){
-        return this.blogService.getBlogById(blogId);
+    public ResponseEntity<Blog> getBlogById(@PathVariable Integer blogId){
+        return ResponseEntity.ok().body(blogService.getBlogById(blogId));
     }
 
 
@@ -47,6 +46,7 @@ public class BlogController {
         blogService.deleteBlog(blogId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 
     /*This method should update blog and return the updatedBlog */
     @PutMapping("/blogs/{blogId}")
