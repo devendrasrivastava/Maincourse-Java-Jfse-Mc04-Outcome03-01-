@@ -8,13 +8,13 @@ import javax.persistence.*;
 public class Blog {
     /*Add Annotation to declare this field as a Unique Identifier */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int blogId;
     private String blogTitle;
     private String authorName;
     private String blogContent;
 
-    /* Generate no-arg and parametrized consructor */
+    /* Generate no-arg and parametrized constructor */
     public Blog() {
     }
     public Blog(int blogId, String blogTitle, String authorName, String blogContent) {

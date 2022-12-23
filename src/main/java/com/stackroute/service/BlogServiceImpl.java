@@ -38,7 +38,7 @@ public class BlogServiceImpl implements BlogService{
     }
 
     @Override
-    public Blog updateBlog(Blog blog, int blogId) {
+    public Blog updateBlog(Blog blog) {
         Optional<Blog> blog1 = this.repository.findById(blog.getBlogId());
 
             Blog blog2 = blog1.get();

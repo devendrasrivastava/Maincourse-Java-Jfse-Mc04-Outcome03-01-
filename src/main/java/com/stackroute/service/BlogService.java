@@ -28,5 +28,5 @@ public interface BlogService {
     /**
      * AbstractMethod to update a blog
      */
-    Blog updateBlog(Blog blog, int blogId);
+    Blog updateBlog(Blog blog);
 }

@@ -50,9 +50,11 @@ public class BlogController {
 
     /*This method should update blog and return the updatedBlog */
     @PutMapping("/blogs/{blogId}")
-    public ResponseEntity<Blog> updateBlog(@RequestBody Blog newBlog, @PathVariable int blogId) {
-        Blog editBlog = blogService.updateBlog(newBlog, blogId);
-        return new ResponseEntity<>(editBlog,HttpStatus.OK);
+    public ResponseEntity<Blog> updateBlog(@RequestBody int blogId, @PathVariable Blog newBlog) {
+//        Blog editBlog = blogService.updateBlog(newBlog, blogId);
+//        return new ResponseEntity<>(editBlog,HttpStatus.OK);
+        newBlog.setBlogId(blogId);
+        return ResponseEntity.ok().body(this.blogService.updateBlog(newBlog));
     }
 
 }
