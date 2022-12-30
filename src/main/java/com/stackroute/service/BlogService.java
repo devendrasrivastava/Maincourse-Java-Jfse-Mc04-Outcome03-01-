@@ -18,12 +18,12 @@ public interface BlogService {
     /**
      * AbstractMethod to get blog by id
      */
-    Blog getBlogById(int blogId);
+    Blog getBlogById(int id);
 
     /**
      * AbstractMethod to delete blog by id
      */
-    Blog deleteBlog(int blogId);
+    void deleteBlog(int id);
 
     /**
      * AbstractMethod to update a blog

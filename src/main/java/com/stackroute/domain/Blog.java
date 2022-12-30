@@ -2,21 +2,23 @@ package com.stackroute.domain;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name= "blog")
 /* Add Annotation to declare this class as a JPA Entity */
+@Entity
+@Table(name = "blogDb")
 public class Blog {
     /*Add Annotation to declare this field as a Unique Identifier */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
     private int blogId;
     private String blogTitle;
     private String authorName;
     private String blogContent;
 
-    /* Generate no-arg and parametrized constructor */
+    /* Generate no-arg and parametrized consructor */
+
     public Blog() {
     }
+
     public Blog(int blogId, String blogTitle, String authorName, String blogContent) {
         this.blogId = blogId;
         this.blogTitle = blogTitle;
