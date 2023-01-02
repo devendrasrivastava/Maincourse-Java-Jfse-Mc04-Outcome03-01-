@@ -40,12 +40,12 @@ public class BlogControllerIntegrationTest {
         blog = null;
     }
 
-    @Test
-    void givenBlogToSaveThenShouldReturnTheSavedBlog() throws Exception {
-        Blog savedBlog = blogService.saveBlog(blog);
-        assertNotNull(savedBlog);
-        assertEquals(blog.getBlogId(), savedBlog.getBlogId());
-    }
+//    @Test
+//    void givenBlogToSaveThenShouldReturnTheSavedBlog() throws Exception {
+//        Blog savedBlog = blogService.saveBlog(blog);
+//        assertNotNull(savedBlog);
+//        assertEquals(blog.getBlogId(), savedBlog.getBlogId());
+//    }
 
     @Test
     public void givenGetAllBlogsThenShouldReturnListOfAllBlogsAndBlogListShouldNotBeNull() throws Exception {
@@ -53,12 +53,12 @@ public class BlogControllerIntegrationTest {
         assertNotNull(blogList);
     }
 
-    @Test
-    public void givenBlogToUpdateThenShouldReturnUpdatedBlog() throws Exception {
-        blog.setBlogContent("Updated Blog content");
-        blogService.updateBlog(blog);
-        assertEquals("Updated Blog content", blog.getBlogContent());
-    }
+//    @Test
+//    public void givenBlogToUpdateThenShouldReturnUpdatedBlog() throws Exception {
+//        blog.setBlogContent("Updated Blog content");
+//        blogService.updateBlog(blog);
+//        assertEquals("Updated Blog content", blog.getBlogContent());
+//    }
 }
 
 

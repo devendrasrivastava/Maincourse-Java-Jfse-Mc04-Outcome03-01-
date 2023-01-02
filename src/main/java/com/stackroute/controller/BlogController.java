@@ -11,6 +11,7 @@ import java.util.List;
 
 /* Add annotation to declare this class as REST Controller */
 @RestController
+@RequestMapping("/api/v1")
 public class BlogController {
 
     /* Provide implementation code for these methods */

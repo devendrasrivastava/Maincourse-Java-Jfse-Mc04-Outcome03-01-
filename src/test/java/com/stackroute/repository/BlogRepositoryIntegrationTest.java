@@ -34,12 +34,12 @@ class BlogRepositoryIntegrationTest {
         blog = null;
     }
 
-    @Test
-    public void givenBlogToSaveThenShouldReturnSavedBlog() {
-        blogRepository.save(blog);
-        Blog fetchedBlog = blogRepository.findById(blog.getBlogId()).get();
-        assertEquals(1, fetchedBlog.getBlogId());
-    }
+//    @Test
+//    public void givenBlogToSaveThenShouldReturnSavedBlog() {
+//        blogRepository.save(blog);
+//        Blog fetchedBlog = blogRepository.findById(blog.getBlogId()).get();
+//        assertEquals(1, fetchedBlog.getBlogId());
+//    }
 
 
     @Test

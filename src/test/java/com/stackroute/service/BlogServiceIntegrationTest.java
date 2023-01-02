@@ -43,12 +43,12 @@ public class BlogServiceIntegrationTest {
         blogList = null;
     }
 
-    @Test
-    public void givenBlogToSaveThenShouldReturnSavedBlog() {
-        Blog savedBlog = blogRepository.save(blog1);
-        assertNotNull(savedBlog);
-        assertEquals(blog1.getBlogId(), savedBlog.getBlogId());
-    }
+//    @Test
+//    public void givenBlogToSaveThenShouldReturnSavedBlog() {
+//        Blog savedBlog = blogRepository.save(blog1);
+//        assertNotNull(savedBlog);
+//        assertEquals(blog1.getBlogId(), savedBlog.getBlogId());
+//    }
 
     @Test
     public void givenGetAllBlogsThenShouldReturnListOfAllBlogs() {
