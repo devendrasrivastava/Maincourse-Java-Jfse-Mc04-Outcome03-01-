@@ -18,7 +18,7 @@ public class BlogController {
     @Autowired
     protected BlogService blogService;
     /*This method should save blog and return savedBlog Object */
-    @PostMapping("/blogs")
+    @PostMapping("/blog")
     public ResponseEntity<Blog> saveBlog(@RequestBody Blog blog) {
         return ResponseEntity.ok().body(this.blogService.saveBlog(blog));
     }
@@ -30,20 +30,20 @@ public class BlogController {
     }
 
     /*This method should fetch the blog taking its id and return the respective blog */
-    @GetMapping("/blogs/{blogId}")
+    @GetMapping("/blog/{blogId}")
     public ResponseEntity<Blog> getBlogById(@PathVariable int blogId){
         return ResponseEntity.ok().body(blogService.getBlogById(blogId));
     }
 
     /*This method should delete the blog taking its id and return the deleted blog */
-@DeleteMapping("/blogs/{blogId}")
+@DeleteMapping("/blog/{blogId}")
     public HttpStatus deleteBlog(@PathVariable int blogId) {
     this.blogService.deleteBlog(blogId);
     return HttpStatus.NO_CONTENT;
     }
 
     /*This method should update blog and return the updatedBlog */
-@PutMapping("/blogs/{blogId}")
+@PutMapping("/blog/{blogId}")
     public ResponseEntity<Blog> updateBlog(@PathVariable int blogId, @RequestBody Blog blog) {
     blog.setBlogId(blogId);
     return ResponseEntity.ok().body(this.blogService.updateBlog(blog));

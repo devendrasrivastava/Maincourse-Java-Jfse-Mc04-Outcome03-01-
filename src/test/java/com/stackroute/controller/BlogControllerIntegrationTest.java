@@ -40,12 +40,12 @@ public class BlogControllerIntegrationTest {
         blog = null;
     }
 
-//    @Test
-//    void givenBlogToSaveThenShouldReturnTheSavedBlog() throws Exception {
-//        Blog savedBlog = blogService.saveBlog(blog);
-//        assertNotNull(savedBlog);
-//        assertEquals(blog.getBlogId(), savedBlog.getBlogId());
-//    }
+    @Test
+    void givenBlogToSaveThenShouldReturnTheSavedBlog() throws Exception {
+        Blog savedBlog = blogService.saveBlog(blog);
+        assertNotNull(savedBlog);
+        assertEquals(blog.getBlogId(), savedBlog.getBlogId());
+    }
 
     @Test
     public void givenGetAllBlogsThenShouldReturnListOfAllBlogsAndBlogListShouldNotBeNull() throws Exception {
