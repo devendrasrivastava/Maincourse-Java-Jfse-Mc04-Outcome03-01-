@@ -1,11 +1,9 @@
 package com.stackroute.repository;
 
-/* Add annotation to declare this class as a Repository class.
-This interface should extend CRUD Repository
-* */
-
 import com.stackroute.domain.Blog;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface BlogRepository extends JpaRepository<Blog, Integer> {
+@Repository
+public interface BlogRepository extends CrudRepository<Blog,Integer> {
 }

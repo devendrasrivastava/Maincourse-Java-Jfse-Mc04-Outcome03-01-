@@ -68,7 +68,7 @@ public class BlogControllerTest {
         mockMvc.perform(post("/api/v1/blog")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(asJsonString(blog)))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andDo(MockMvcResultHandlers.print());
         verify(blogService).saveBlog(any());
     }
@@ -89,26 +89,26 @@ public class BlogControllerTest {
         when(blogService.getBlogById(blog.getBlogId())).thenReturn(blog);
         mockMvc.perform(get("/api/v1/blog/1"))
                 .andExpect(MockMvcResultMatchers.status()
-                        .isOk())
+                        .isFound())
                 .andDo(MockMvcResultHandlers.print());
 
     }
 
-//    @Test
-//    public void givenBlogIdToDeleteThenShouldNotReturnDeletedBlog() throws Exception {
-//        when(blogService.deleteBlog(blog.getBlogId())).thenReturn(blog);
-//        mockMvc.perform(delete("/api/v1/blog/1")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(asJsonString(blog)))
-//                .andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print());
-//    }
+    @Test
+    public void givenBlogIdToDeleteThenShouldNotReturnDeletedBlog() throws Exception {
+        when(blogService.deleteBlog(blog.getBlogId())).thenReturn(blog);
+        mockMvc.perform(delete("/api/v1/blog/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(asJsonString(blog)))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print());
+    }
 
-//    @Test
-//    public void givenBlogToUpdateThenShouldReturnUpdatedBlog() throws Exception {
-//        when(blogService.updateBlog(any())).thenReturn(blog);
-//        mockMvc.perform(put("/api/v1/blog").contentType(MediaType.APPLICATION_JSON).content(asJsonString(blog)))
-//                .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
-//    }
+    @Test
+    public void givenBlogToUpdateThenShouldReturnUpdatedBlog() throws Exception {
+        when(blogService.updateBlog(any())).thenReturn(blog);
+        mockMvc.perform(put("/api/v1/blog").contentType(MediaType.APPLICATION_JSON).content(asJsonString(blog)))
+                .andExpect(status().isOk()).andDo(MockMvcResultHandlers.print());
+    }
 
     public static String asJsonString(final Object obj) {
         try {

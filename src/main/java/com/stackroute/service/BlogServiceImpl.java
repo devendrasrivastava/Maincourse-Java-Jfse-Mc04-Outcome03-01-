@@ -1,66 +1,61 @@
 package com.stackroute.service;
 
-
 import com.stackroute.domain.Blog;
-import com.stackroute.exception.ResourceNotFoundException;
 import com.stackroute.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/* Add annotation to declare this class as Service class.
- * Also it should implement BlogService Interface and override all the implemented methods.*/
 @Service
-@Transactional
 public class BlogServiceImpl implements BlogService{
-@Autowired
-private BlogRepository blogRepository;
-@Override
-public Blog saveBlog(Blog blog){
-    return blogRepository.save(blog);    //doubtfull
-}
+    private BlogRepository blogRepository;
 
-@Override
-    public Blog updateBlog(Blog blog){
-    Optional<Blog> blogDb = this.blogRepository.findById(blog.getBlogId());
-    if(blogDb.isPresent()){
-        Blog blogUpdate = blogDb.get();
-        blogUpdate.setBlogId(blog.getBlogId());
-        blogUpdate.setBlogTitle(blog.getBlogTitle());
-        blogUpdate.setBlogContent(blog.getBlogContent());
-        blogUpdate.setAuthorName(blog.getAuthorName());
-        blogRepository.save(blogUpdate);
-        return blogUpdate;
-    }else {
-throw new ResourceNotFoundException("Record not found with given id: " + blog.getBlogId());
+    @Autowired
+    public BlogServiceImpl(BlogRepository blogRep){
+        this.blogRepository = blogRep;
     }
-}
+    @Override
+    public Blog getBlogById(int id) {
+        return this.blogRepository.findById(id).get();
+    }
+    @Override
+    public List<Blog> getAllBlogs() {
+        List<Blog> result;
+        Iterable<Blog> itr = this.blogRepository.findAll();
+        if(itr != null){
+            result = new ArrayList<>();
+            itr.forEach(blog -> result.add(blog));
+        }
+        else{
+            result = null;
+        }
+        return result;
+    }
 
     @Override
-public List<Blog> getAllBlogs(){
-return this.blogRepository.findAll();
-    }
-
-@Override
-    public Blog getBlogById(int blogId){
-        Optional<Blog> blogDb =this.blogRepository.findById(blogId);
-        if(blogDb.isPresent()){
-        return blogDb.get();
-        }else {
-        throw new ResourceNotFoundException("Record not found with given id: " + blogId);
-}
-}
-
-@Override
-    public void deleteBlog(int blogId){
-        Optional<Blog> blogDb = this.blogRepository.findById(blogId);
-        if(blogDb.isPresent()){
-            this.blogRepository.delete(blogDb.get());
-        }else {
-        throw new ResourceNotFoundException("Record not found with given id: " + blogId);
+    public Blog deleteBlog(int id) {
+        Optional<Blog> find_blog = this.blogRepository.findById(id);
+        if(find_blog.isPresent()) {
+            this.blogRepository.deleteById(id);
+            return this.blogRepository.findById(id).get();
         }
+        return null;
+    }
+    @Override
+    public Blog saveBlog(Blog blog) {
+        return this.blogRepository.save(blog);
+    }
+    @Override
+    public Blog updateBlog(Blog blog) {
+        Optional<Blog> find_blog = this.blogRepository.findById(blog.getBlogId());
+        if(find_blog.isPresent()){
+            this.blogRepository.save(blog);
+            return this.blogRepository.findById(blog.getBlogId()).get();
+        }
+        return null;
+    }
 }
-}
+
